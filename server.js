@@ -12,12 +12,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Historial de mensajes por sala
 let rooms = {
+  General: []
+};
 // Usuarios conectados
 let users = {};
 // Roles de usuario (solo el primero que entra es admin)
 let admins = {};
-  General: []
-};
 
 io.on('connection', (socket) => {
   let username = '';
@@ -154,6 +154,6 @@ setTheme(savedTheme);
 });
 
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-  console.log(`Servidor escuchando en puerto ${PORT}`);
+server.listen(process.env.PORT || 3000, () => {
+  console.log(`Servidor escuchando en puerto ${process.env.PORT || 3000}`);
 });
